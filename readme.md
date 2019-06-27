@@ -40,9 +40,9 @@
     - curl -H 'Content-Type: application/json' -X DELETE http://localhost:8080/to-do/<b>ID</b> 
 
 # to running on container:
-  - preparar imagem mariadb:
+  - build application imagem container:
     - docker image build -f Dockerfile -t teste/todolist:1.0 .
-  - criar "cluster" swarm
+  - create "cluster" swarm and deploy stack solution:
     - docker swarm init
     - docker service deploy -c docker-compose.yml todoCluster
     - docker service ls
