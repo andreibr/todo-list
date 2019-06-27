@@ -32,12 +32,12 @@
 	   -X POST http://localhost:8080/to-do/ | jq
   - GET (query)
     - curl -H 'Content-Type: application/json' -X GET http://localhost:8080/to-do/ | jq
-    - curl -H 'Content-Type: application/json' -X GET http://localhost:8080/to-do/<ID> | jq
+    - curl -H 'Content-Type: application/json' -X GET http://localhost:8080/to-do/<b>ID</b> | jq
   - PUT (update)
-    - curl -H 'Content-Type: application/json' -d '{"id":"<ID>","task_name":"task1","task_status":"0","task_description":"task1 desc","task_init_date":"yyyy-mm-dd","task_final_date":null}' 
-	   -X PUT http://localhost:8080/to-do/<ID> | jq
+    - curl -H 'Content-Type: application/json' -d '{"id":"<b>ID</b>","task_name":"task1","task_status":"0","task_description":"task1 desc","task_init_date":"yyyy-mm-dd","task_final_date":null}' 
+	   -X PUT http://localhost:8080/to-do/<b>ID</b> | jq
   - DELETE
-    - curl -H 'Content-Type: application/json' -X DELETE http://localhost:8080/to-do/<ID> 
+    - curl -H 'Content-Type: application/json' -X DELETE http://localhost:8080/to-do/<b>ID</b> 
 
 # to running on container:
   - to do; 
