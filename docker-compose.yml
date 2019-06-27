@@ -1,0 +1,26 @@
+version: '3.3'
+services:
+  mariadb:
+    image: mariadb
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=root 
+      - MYSQL_DATABASE=db_todolist
+    networks:
+      - backend
+    ports:
+      - 3306:3306
+
+  todolist:
+    image: teste/todolist:1.0
+    networks:
+      - backend
+    ports:
+      - 4000:4000
+      - 8080:8080
+    depends_on: 
+      - mariadb
+
+networks:
+  backend:
+

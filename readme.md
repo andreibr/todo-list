@@ -40,4 +40,23 @@
     - curl -H 'Content-Type: application/json' -X DELETE http://localhost:8080/to-do/<b>ID</b> 
 
 # to running on container:
-  - to do; 
+  - preparar imagem mariadb:
+    - docker image build -f Dockerfile -t teste/todolist:1.0 .
+  - criar "cluster" swarm
+    - docker swarm init
+    - docker service deploy -c docker-compose.yml todoCluster
+    - docker service ls
+  - OBS.: to access application use: http://127.0.0.1 + port
+
+# to running on kubernetes:
+  - to do;
+
+# monitoring:
+  - Services:
+    - port 8080/dump
+    - port 8080/metrics 
+    - port 8080/health 
+    - port 8080/info
+    - port 4000: glowroot apm (https://glowroot.org/)
+    - port 9090/prometheus monitoring solution (https://prometheus.io/)	# to do
+
