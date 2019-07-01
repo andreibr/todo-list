@@ -1,17 +1,17 @@
 # Projeto: TODO-LIST API (API para armazenamento/leitura de tarefas)
 
-# requirede apps:
+# required apps:
   - maven
   - java 8
   - mysql
   - curl (or similar)
   - jq
 
-# running as container (optional):
+# to running as container (optional):
     - docker
     - minikube (or similar)
 
-# configure database:
+# database configure:
   - create database db_todolist
   - create table task(
                  id int auto_increment primary key,
@@ -26,7 +26,7 @@
   - mvn clean package
   - java -jar target/TODO-LIST_API-1.0-SNAPSHOT.jar
 
-# to some tests:
+# to do some tests:
   - POST (insert)
     - curl -H 'Content-Type: application/json' -d '{"task_name":"task1","task_status":"0","task_description":"task1 desc","task_init_date":"yyyy-mm-dd","task_final_date":null}' 
 	   -X POST http://127.0.0.1:8080/to-do/ | jq
@@ -40,14 +40,13 @@
     - curl -H 'Content-Type: application/json' -X DELETE http://127.0.0.1:8080/to-do/<b>ID</b> 
 
 # to running on container:
-  - preparar imagem mariadb:
+  - build application imagem container:
     - docker image build -f Dockerfile -t teste/todolist:1.0 .
-  - criar "cluster" swarm
+  - create "cluster" swarm and deploy stack solution:
     - docker swarm init
     - docker service deploy -c docker-compose.yml todoCluster
     - docker service ls
-  - OBS.: to access application use: http://127.0.0.1 + port
-
+  
 # to running on kubernetes:
   - to do;
 
