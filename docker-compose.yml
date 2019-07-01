@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 services:
   mariadb:
     image: mariadb
@@ -8,8 +8,12 @@ services:
       - MYSQL_DATABASE=db_todolist
     networks:
       - backend
-    ports:
-      - 3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: dnsrr
 
   todolist:
     image: teste/todolist:1.0
@@ -18,9 +22,47 @@ services:
     ports:
       - 4000:4000
       - 8080:8080
-    depends_on: 
-      - mariadb
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: vip
+
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+    env_file:
+      - monitoring/grafana.config
+    networks:
+      - backend
+      - frontend
+    ports:
+      - 3000:3000
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: vip
+
+  prometheus:
+    image: basi/prometheus-swarm
+    volumes:
+      - ./monitoring/prometheus/:/etc/prometheus/
+      - prometheus_data:/var/lib/prometheus
+    networks:
+      - backend
+    ports:
+      - 9090:9090
+    deploy:
+      mode: replicated
+      replicas: 1
+      endpoint_mode: vip
 
 networks:
   backend:
+  frontend:
+
+volumes:
+  prometheus_data:
+  grafana_data:
+  db_data:
 

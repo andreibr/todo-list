@@ -1,5 +1,7 @@
 package br.com.abr.controller;
 
+import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,42 +17,50 @@ import br.com.abr.entity.Task;
 import br.com.abr.repository.ITaskRepository;
 import javassist.tools.web.BadHttpRequest;
 
-
-
 @RestController
-@RequestMapping(path = "/to-do")
+@RequestMapping(path = "/v0/to-do")
 public class TaskController {
+	
+	private List<Task> tasks;
+	private Optional<Task> task;
 
-    @Autowired
-    private ITaskRepository repository;
+	@Autowired
+	private ITaskRepository repository;
 
-    @GetMapping
-    public Iterable<Task> findAll() {
-        return repository.findAll();
-    }
+	@GetMapping
+	public Iterable<Task> findAll() {
 
-    @GetMapping(path = "/{id}")
-    public Task find(@PathVariable("id") Integer id) {
-        return repository.findOne(id);
-    }
+       	tasks = repository.findAll();
+        return tasks;
+	}
 
-    @PostMapping(consumes = "application/json")
-    public Task create(@RequestBody Task task) {
-        return repository.save(task);
-    }
+	@GetMapping(path = "/{id}")
+	public Optional<Task> find(@PathVariable("id") Integer id) {
 
-    @DeleteMapping(path = "/{id}")
-    public void delete(@PathVariable("id") Integer id) {
-        repository.delete(id);
-    }
+       	task = repository.findById(id);
+		return task;
+	}
 
-    @PutMapping(path = "/{id}")
-    public Task update(@PathVariable("id") Integer id, @RequestBody Task task) throws BadHttpRequest {
-        if (repository.exists(id)) {
-            return repository.save(task);
-        } else {
-            throw new BadHttpRequest();
-        }
-    }
+	@PostMapping(consumes = "application/json")
+	public Task create(@RequestBody Task task) {
 
+       	task = repository.save(task);
+		return task;
+	}
+
+	@DeleteMapping(path = "/{id}")
+	public void delete(@PathVariable("id") Integer id) {
+
+       	repository.deleteById(id);
+	}
+
+	@PutMapping(path = "/{id}")
+	public Task update(@PathVariable("id") Integer id, @RequestBody Task task) throws BadHttpRequest {
+		if (repository.existsById(id)) {
+        	task = repository.save(task);
+			return task;
+		} else {
+			throw new BadHttpRequest();
+		}
+	}	
 }
