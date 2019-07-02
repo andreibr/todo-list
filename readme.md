@@ -40,22 +40,32 @@
     - curl -H 'Content-Type: application/json' -X DELETE http://127.0.0.1:8080/to-do/<b>ID</b> 
 
 # to running on container:
-  - build application imagem container:
-    - docker image build -f Dockerfile -t teste/todolist:1.0 .
+  - build application imagem container (image exists on docker.io):
+    - docker image build -f Dockerfile -t andreibr/todolist:1.0 .
   - create "cluster" swarm and deploy stack solution:
     - docker swarm init
     - docker service deploy -c docker-compose.yml todoCluster
     - docker service ls
   
 # to running on kubernetes:
-  - to do;
+  - with minikube or similar, execute:
+    - kubectl create -f kubernetes/db/permissoes.yaml
+    - kubectl create -f kubernetes/db/statefulset.yaml
+    - kubectl create -f kubernetes/db/servico-banco.yaml
+
+    - kubectl create -f kubernetes/app/deployment.yaml
+    - kubectl create -f kubernetes/app/servico-aplicacao.yaml
+
+    - minikube service servico-aplicacao --url
+	(use this value as addrees on your tests)
 
 # monitoring:
   - Services:
-    - port 8080/dump
-    - port 8080/metrics 
-    - port 8080/health 
-    - port 8080/info
+    - /actuator		
+    - /actuator/metrics 
+    - /actuator/metrics/"some metric"
+    - /actuator/health 
+    - /actuator/info
+    - /actuator/prometheus
     - port 4000: glowroot apm (https://glowroot.org/)
-    - port 9090/prometheus monitoring solution (https://prometheus.io/)	# to do
 

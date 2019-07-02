@@ -16,7 +16,7 @@ services:
       endpoint_mode: dnsrr
 
   todolist:
-    image: teste/todolist:1.0
+    image: andreibr/todolist:1.0
     networks:
       - backend
     ports:
@@ -27,42 +27,9 @@ services:
       replicas: 1
       endpoint_mode: vip
 
-  grafana:
-    image: grafana/grafana
-    volumes:
-      - grafana_data:/var/lib/grafana
-    env_file:
-      - monitoring/grafana.config
-    networks:
-      - backend
-      - frontend
-    ports:
-      - 3000:3000
-    deploy:
-      mode: replicated
-      replicas: 1
-      endpoint_mode: vip
-
-  prometheus:
-    image: basi/prometheus-swarm
-    volumes:
-      - ./monitoring/prometheus/:/etc/prometheus/
-      - prometheus_data:/var/lib/prometheus
-    networks:
-      - backend
-    ports:
-      - 9090:9090
-    deploy:
-      mode: replicated
-      replicas: 1
-      endpoint_mode: vip
-
 networks:
   backend:
-  frontend:
 
 volumes:
-  prometheus_data:
-  grafana_data:
   db_data:
 
