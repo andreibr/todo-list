@@ -16,7 +16,7 @@ services:
       endpoint_mode: dnsrr
 
   todolist:
-    image: andreibr/todolist:1.0
+    image: andreibr/todolist:1.1
     networks:
       - backend
     ports:
