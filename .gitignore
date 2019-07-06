@@ -8,6 +8,7 @@
 *.zip
 *.tar.gz
 *.rar
+*.db
 hs_err_pid*
 /.project
 /.settings
