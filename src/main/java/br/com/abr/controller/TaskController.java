@@ -1,5 +1,7 @@
 package br.com.abr.controller;
 
+import java.util.Dictionary;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.Gson;
 
 import br.com.abr.entity.Task;
 import br.com.abr.repository.ITaskRepository;
@@ -32,6 +36,14 @@ public class TaskController {
 
        	tasks = repository.findAll();
         return tasks;
+	}
+	
+	@GetMapping(path = "/version")
+	public String version() {
+		Dictionary<String, String> versao = new Hashtable<String, String>();
+		versao.put("versao", "1.0.0");
+		Gson gson = new Gson();
+		return gson.toJson(versao);		
 	}
 
 	@GetMapping(path = "/{id}")

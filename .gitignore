@@ -15,4 +15,7 @@ hs_err_pid*
 /.classpath
 /target/
 !.mvn/wrapper/maven-wrapper.jar
+monitoring/extras/logs
+monitoring/extras/tmp
+monitoring/extras/data
 

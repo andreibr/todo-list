@@ -1,0 +1,7 @@
+{	
+	"task_name":"ajuste ci/cd para uso direto no openshift",
+	"task_status":"pending",
+	"task_description":"usar openshift para build e entrega no ambiente tb, pois openshift nao fala com gitlab-runner (push)",
+	"task_init_date":"2020-02-18",
+	"task_final_date":""
+}
