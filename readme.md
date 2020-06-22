@@ -1,4 +1,4 @@
-# Projeto: TODO-LIST API (API para armazenamento/leitura de tarefas)
+# Projeto: TO-DO LIST API (API para armazenamento/leitura de tarefas)
 
 # required apps:
   - maven

@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.abr</groupId>
-	<artifactId>TODO-LIST_API</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>todo-list_api</artifactId>
+	<version>1.0.1</version>
 
 	<!-- Define the parent pom -->
 	<parent>

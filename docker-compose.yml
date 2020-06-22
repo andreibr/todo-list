@@ -13,15 +13,15 @@ services:
     deploy:
       mode: replicated
       replicas: 1
-      endpoint_mode: dnsrr
+      endpoint_mode: vip
 
   todolist:
-    image: andreibr/todolist:1.1
+    image: andreibr/todo-list:2.0.2
     networks:
       - backend
     ports:
       - 4000:4000
-      - 8080:8080
+      - 8080:25000
     deploy:
       mode: replicated
       replicas: 1
