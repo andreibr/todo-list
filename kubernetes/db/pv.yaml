@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: db-pv
+spec:
+  storageClassName: ""
+  capacity:
+    storage: 200Mi
+  accessMode:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  volumeMode: Filesystem
+
