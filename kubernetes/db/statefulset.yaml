@@ -1,9 +1,12 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: statefulset-mariadb
 spec:
   serviceName: mariadb
+  selector:
+    matchSelector:
+      name: mariadb
   template:
     metadata:
       labels:
