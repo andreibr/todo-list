@@ -42,7 +42,7 @@
 
 # to running on container:
   - build application imagem container (image exists on docker.io):
-    - docker image build -f Dockerfile -t andreibr/todolist:1.0 .
+    - docker image build -f Dockerfile -t <your_repository>/todolist:1.0 . # remember, change the docker-compose to your repository
   - create "cluster" swarm and deploy stack solution:
     - docker swarm init
     - docker service deploy -c docker-compose.yml todoCluster
