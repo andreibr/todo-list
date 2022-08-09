@@ -7,7 +7,7 @@
   - curl (or similar)
   - jq
 
-# to running as container (optional):
+# to run as container (optional):
     - docker
     - minikube (or similar)
 
