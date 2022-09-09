@@ -16,12 +16,12 @@ services:
       endpoint_mode: vip
 
   todolist:
-    image: andreibr/todo-list:2.0.2
+    image: us-east1-docker.pkg.dev/visto-dev-project/repo-teste/todo-list:1.0.0
     networks:
       - backend
     ports:
       - 4000:4000
-      - 8080:25000
+      - 25000:25000
     deploy:
       mode: replicated
       replicas: 1
