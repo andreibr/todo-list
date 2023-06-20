@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: todolist
-          image: andreibr/todolist:2.0
+          image: andreibr/todolist:1.0.0
           ports:
           - containerPort: 4000
             name: glowroot

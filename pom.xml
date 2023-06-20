@@ -76,13 +76,13 @@
     </dependency>
   </dependencies>
   <build>
-    <extensions>
+    <!--extensions>
       <extension>
         <groupId>com.google.cloud.artifactregistry</groupId>
         <artifactId>artifactregistry-maven-wagon</artifactId>
         <version>2.1.0</version>
       </extension>
-    </extensions>
+    </extensions-->
 
     <plugins>
       <plugin>
@@ -91,7 +91,7 @@
       </plugin>
     </plugins>
   </build>
-  <repositories>
+  <!--repositories>
     <repository>
       <id>artifact-registry</id>
       <url>artifactregistry://us-east1-maven.pkg.dev/visto-dev-project/pacotes-maven</url>
@@ -112,6 +112,6 @@
       <id>artifact-registry</id>
       <url>artifactregistry://us-east1-maven.pkg.dev/visto-dev-project/pacotes-maven</url>
     </repository>
-  </distributionManagement>
+  </distributionManagement-->
 
 </project>

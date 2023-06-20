@@ -16,7 +16,7 @@ services:
       endpoint_mode: vip
 
   todolist:
-    image: us-east1-docker.pkg.dev/visto-dev-project/repo-teste/todo-list:1.0.0
+    image: andreibr/todo-list:1.0.0
     networks:
       - backend
     ports:
