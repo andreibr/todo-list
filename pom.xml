@@ -13,6 +13,8 @@
   </parent>
   <properties>
     <java.version>11</java.version>
+    <sonar.organization>andreibr</sonar.organization>
+    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
   <dependencies>
     <!-- Spring Boot -->
