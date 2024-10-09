@@ -14,7 +14,7 @@ exporters:
   datadog:
     api:
       site: datadoghq.com
-      key: 748ae0f05f285260cde6a9a06202f286
+      key: DD_API_KEY
 
 service:
   pipelines:

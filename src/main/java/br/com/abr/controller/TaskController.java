@@ -88,7 +88,7 @@ public class TaskController {
 		if (tasks.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		} 
-		return new ResponseEntity<>(findAll(), HttpStatus.OK);
+		return  findAll();
 	}
 
 	@DeleteMapping(path = "/{id}")
@@ -98,10 +98,10 @@ public class TaskController {
 	}
 
 	@PutMapping(path = "/{id}")
-	public Task update(@PathVariable("id") Integer id, @RequestBody Task task) throws BadHttpRequest {
+	public ResponseEntity<Iterable<Task>> update(@PathVariable("id") Integer id, @RequestBody Task task) throws BadHttpRequest {
 		if (repository.existsById(id)) {
         	task = repository.save(task);
-			return new ResponseEntity<>(findAll(), HttpStatus.OK);
+			return findAll();
 		} else {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
