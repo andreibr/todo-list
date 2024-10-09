@@ -1,4 +1,4 @@
-name: SonarCloud
+name: Agenda todolist CI/CD
 on:
   push:
     branches:
