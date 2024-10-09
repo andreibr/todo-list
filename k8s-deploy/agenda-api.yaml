@@ -1,0 +1,87 @@
+---
+# Source: agenda-api/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: agenda-v2
+spec:
+  ports:
+  - port: 25000
+    protocol: TCP
+    targetPort: 25000
+  selector:
+    app: agenda
+    version: v2.0.18
+  type: NodePort
+---
+# Source: agenda-api/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agenda-v2.0.18
+  labels:
+    tags.datadoghq.com/env: "dev-abr"
+    tags.datadoghq.com/service: "agenda-v2"
+    tags.datadoghq.com/version: "v2.0.18"
+    resource.opentelemetry.io/service.name: "agenda-api"
+    resource.opentelemetry.io/service.version: "v2.0.18"
+    resource.opentelemetry.io/environment: "dev-abr"
+#  annotations:
+#    instrumentation.opentelemetry.io/inject-java: "true"
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  replicas: 
+  selector:
+    matchLabels:
+      app: agenda
+      version: v2.0.18
+  template:
+    metadata: 
+      annotations:
+        admission.datadoghq.com/java-lib.version: v1.40.0
+      labels:
+        app: agenda
+        version: v2.0.18
+        tags.datadoghq.com/env: "dev-abr"
+        tags.datadoghq.com/service: "agenda-v2"
+        tags.datadoghq.com/version: "v2.0.18"
+        admission.datadoghq.com/enabled: "true"
+    spec:
+      containers:
+        - name: agenda
+          image: andreibr/agenda:2.0.18
+          env:
+            - name: DD_TRACE_REMOVE_INTEGRATION_SERVICE_NAMES_ENABLED
+              value: "true"
+            - name: DD_PROFILING_ENABLED
+              value: "true"
+            - name: DD_LOGS_INJECTION
+              value: "true"
+            - name: DD_DBM_PROPAGATION_MODE
+              value: "service"
+#            - name: OTEL_RESOURCE_ATTRIBUTES
+#              value: "service.name=otel-agenda,deployment.environment=otel-abr,service.version=v1.0.14" 
+            - name: APP_VERSION
+              value: v2.0.17
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+#            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+#              value: http://opentelemetry:4318 # sends to HTTP receiver on port 4318
+#              value: http://$(HOST_IP):4317 # sends to HTTP receiver on port 4318
+          ports:
+          - containerPort: 25000
+            name: agenda
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 25000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            successThreshold: 1
+            

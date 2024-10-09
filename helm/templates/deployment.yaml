@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container.name }}-{{ .Chart.AppVersion }}
+  namespace: {{ .Values.namesapce }}
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  replicas: {{ .Values.container.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.container.name }}
+      version: v{{ .Chart.AppVersion }}
+  template:
+    metadata: 
+      labels:
+        app: {{ .Values.container.name }}
+        version: v{{ .Chart.AppVersion }}
+    spec:
+      containers:
+        - name: {{ .Values.container.name }}
+          image: {{ .Values.container.image }}:{{ .Chart.AppVersion }}
+          env:
+            - name: APP_VERSION
+              value: {{ .Chart.AppVersion }}
+          ports:
+          - containerPort: {{ .Values.container.port }}
+            name: {{ .Values.container.name }}
+          readinessProbe:
+            httpGet:
+              path: {{ .Values.container.healthCheck }}
+              port: {{ .Values.container.port }}
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            successThreshold: 1

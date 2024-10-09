@@ -6,7 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.com.abr.entity.Task;
 
-@RepositoryRestResource(path = "/to-do")
 public interface ITaskRepository extends JpaRepository<Task, Integer> {
 
 }

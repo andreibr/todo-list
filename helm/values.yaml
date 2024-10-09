@@ -1,0 +1,18 @@
+namespace: NS
+container:
+  name: agenda
+  replicas: 
+  port: 25000
+  image: andreibr/agenda
+  healthCheck: /actuator/health
+service:
+  version: SRV_VERSION
+  type: ClusterIP
+rollingUpdate:
+  maxUnavailable: 0
+  maxSurge: 
+readinessProbe:
+  initialDelaySeconds: 5
+  periodSeconds: 3
+  successThreshold: 
+

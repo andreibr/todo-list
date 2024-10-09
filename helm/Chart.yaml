@@ -1,0 +1,6 @@
+name: agenda-api
+sources:
+  - https://gitlab.com/andreibr/agenda-api
+version: CHART_VERSION
+appVersion: APP_VERSION
+
