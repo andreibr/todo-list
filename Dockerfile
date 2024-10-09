@@ -19,7 +19,8 @@ WORKDIR /app
 COPY . /app/
 RUN mvn clean package -DskipTests
 
-FROM azul/zulu-openjdk-alpine:11.0.20.1-11.66.19-jre
+#FROM azul/zulu-openjdk-alpine:11.0.20.1-11.66.19-jre
+FROM azul/zulu-openjdk-alpine:8-latest
 ARG DD_GIT_REPOSITORY_URL
 ARG DD_GIT_COMMIT_SHA
 ENV DD_GIT_REPOSITORY_URL=${DD_GIT_REPOSITORY_URL} 
