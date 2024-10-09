@@ -11,20 +11,20 @@ spec:
     targetPort: 25000
   selector:
     app: agenda
-    version: v9e7dea0dff8d3254955448ce1491dcbae6357067
+    version: ee2a6406a49e4283c26a76c921954856934e7399
   type: NodePort
 ---
 # Source: agenda-api/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: agenda-v9e7dea0dff8d3254955448ce1491dcbae6357067
+  name: agenda-ee2a6406a49e4283c26a76c921954856934e7399
   labels:
     tags.datadoghq.com/env: "dev-abr"
     tags.datadoghq.com/service: "agenda-v2"
-    tags.datadoghq.com/version: "v9e7dea0dff8d3254955448ce1491dcbae6357067"
+    tags.datadoghq.com/version: "ee2a6406a49e4283c26a76c921954856934e7399"
     resource.opentelemetry.io/service.name: "agenda-api"
-    resource.opentelemetry.io/service.version: "v9e7dea0dff8d3254955448ce1491dcbae6357067"
+    resource.opentelemetry.io/service.version: "ee2a6406a49e4283c26a76c921954856934e7399"
     resource.opentelemetry.io/environment: "dev-abr"
 #  annotations:
 #    instrumentation.opentelemetry.io/inject-java: "true"
@@ -38,17 +38,17 @@ spec:
   selector:
     matchLabels:
       app: agenda
-      version: v9e7dea0dff8d3254955448ce1491dcbae6357067
+      version: ee2a6406a49e4283c26a76c921954856934e7399
   template:
     metadata: 
       annotations:
         admission.datadoghq.com/java-lib.version: v1.40.0
       labels:
         app: agenda
-        version: v9e7dea0dff8d3254955448ce1491dcbae6357067
+        version: ee2a6406a49e4283c26a76c921954856934e7399
         tags.datadoghq.com/env: "dev-abr"
         tags.datadoghq.com/service: "agenda-v2"
-        tags.datadoghq.com/version: "v9e7dea0dff8d3254955448ce1491dcbae6357067"
+        tags.datadoghq.com/version: "ee2a6406a49e4283c26a76c921954856934e7399"
         admission.datadoghq.com/enabled: "true"
     spec:
       containers:
