@@ -16,9 +16,9 @@ jobs:
       id-token: write
     steps:
       - name: Change sha on datadog.yaml
-        run: sed -i "s/COMMIT_SHA/$GITHUB_SHA/g" datadog.yaml
+        run: sed -i "s/COMMIT_SHA/$GITHUB_SHA/g" ../../datadog.yaml
       - name: Change git_url on datadog.yaml
-        run: sed -i "s/GIT_URL/$GITHUB_REPOSITORY/g" datadog.yaml    
+        run: sed -i "s/GIT_URL/$GITHUB_REPOSITORY/g" ../../datadog.yaml    
       # - name: Extract metadata (tags, labels) for Docker
       #   id: meta
       #   uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
