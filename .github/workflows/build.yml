@@ -2,7 +2,8 @@ name: Agenda todolist CI/CD - on tomcat
 on:
   push:
     branches:
-      - master
+      - main
+      - toWebServerTomcat
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
