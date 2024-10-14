@@ -15,12 +15,14 @@ jobs:
       attestations: write
       id-token: write
     steps:
-      - name: Change sha on datadog.yaml
-        run: sed -i "s/COMMIT_SHA/$GITHUB_SHA/g" datadog.yaml
-      - name: Change git_url on datadog.yaml
-        run: sed -i "s/GIT_URL/$GITHUB_REPOSITORY/g" datadog.yaml
-      - name: Copy datadog.yaml to ../../
-        run: cp datadog.yaml ../../    
+      - name: Set env git.commit.sha
+        run: | 
+          echo "GIT_COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "git.comit.sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
+      - name: Set env git.repository.url
+        run: |
+          echo "GIT_REPOSITORY_URL=$(git config --get remote.origin.url)" >> $GITHUB_ENV
+          echo "git.repository.url=$(git config --get remote.origin.url)" >> $GITHUB_ENV
       # - name: Extract metadata (tags, labels) for Docker
       #   id: meta
       #   uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
