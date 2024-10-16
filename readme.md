@@ -70,4 +70,3 @@
     - /actuator/prometheus
     - port 4000: glowroot apm (https://glowroot.org/)
 
-# só um teste

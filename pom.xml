@@ -5,7 +5,7 @@
 
 	<groupId>br.com.abr</groupId>
 	<artifactId>agenda</artifactId>
-	<version>1.0.15</version>
+	<version>1.0.17-tomcat</version>
 	<packaging>war</packaging>
 
 	<!-- Define the parent pom -->
@@ -20,14 +20,15 @@
 	</properties>
 
 	<dependencies>
-		<!-- Spring Boot on Tomcat -->
+		<!-- Spring Boot on Tomcat -->	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- opentelemetry (otel) -->
+
+		<!-- opentelemetry (otel) 
 		<dependency>
 			<groupId>io.opentelemetry.instrumentation</groupId>
 			<artifactId>opentelemetry-instrumentation-bom</artifactId>
@@ -35,6 +36,7 @@
 			<type>pom</type>
 			<scope>import</scope>
       	</dependency>
+		-->
 
 		<!-- Spring Boot -->
 		<dependency>
