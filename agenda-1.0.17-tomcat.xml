@@ -1,9 +1,19 @@
 <Context>
 	    <!-- Simple String parameter -->
 	    <Environment name="DD_GIT_COMMIT_SHA"
-                     value="96545dbded2afd9ae80f098bbb30a1daf0e7ff09"
+                     value="393af444f56d7bf2602b0c76badad3a9d9f8ba6e"
                      type="java.lang.String"/>
 	    <Environment name="DD_GIT_REPOSITORY_URL"
-		    value="https://github.com/andreibr/todo-list"
+					 value="https://github.com/andreibr/todo-list"
                      type="java.lang.String"/>
+		<!-- Environment name="DD_ENV"
+					value="staging"
+                     type="java.lang.String"/>
+		<Environment name="DD_SERVICE"
+					 value="agenda"
+                     type="java.lang.String"/>
+		<Environment name="DD_VERSION"
+					 value="1.0.17"
+                     type="java.lang.String"/ -->
 </Context>
+	
