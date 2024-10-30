@@ -1,7 +1,7 @@
 <Context>
 	    <!-- Simple String parameter -->
 	    <Environment name="DD_GIT_COMMIT_SHA"
-                     value="393af444f56d7bf2602b0c76badad3a9d9f8ba6e"
+                     value="8a54783392ab12d9bf070c8cd3af01662648193f"
                      type="java.lang.String"/>
 	    <Environment name="DD_GIT_REPOSITORY_URL"
 					 value="https://github.com/andreibr/todo-list"
