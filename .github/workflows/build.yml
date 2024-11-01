@@ -17,11 +17,11 @@ jobs:
     steps:
       - name: Set env git.commit.sha
         run: | 
-          echo "GIT_COMMIT_SHA=$(git rev-parse HEAD)" >> $GITHUB_ENV
+          echo "GIT_COMMIT_SHA=$(git rev-parse HEAD) >> $GITHUB_ENV"
           echo "git.comit.sha=$(git rev-parse HEAD)" >> $GITHUB_ENV
       - name: Set env git.repository.url
         run: |
-          echo "GIT_REPOSITORY_URL=$(git config --get remote.origin.url)" >> $GITHUB_ENV
+          echo "GIT_REPOSITORY_URL=$(git config --get remote.origin.url) >> $GITHUB_ENV"
           echo "git.repository.url=$(git config --get remote.origin.url)" >> $GITHUB_ENV
       # - name: Extract metadata (tags, labels) for Docker
       #   id: meta

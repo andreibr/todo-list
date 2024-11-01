@@ -4,8 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.com.abr</groupId>
-	<artifactId>agenda-tomcat</artifactId>
-	<version>1</version>
+	<artifactId>agenda</artifactId>
+	<version>tomcat</version>
 	<packaging>war</packaging>
 
 	<!-- Define the parent pom -->
