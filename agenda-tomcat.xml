@@ -1,15 +1,15 @@
 <Context>
     <Environment name="DD_ENV"
-                 value="agestagingnda-tomcat-v1"
+                 value="staging"
                  type="java.lang.String"/>
     <Environment name="DD_SERVICE"
                  value="agenda-tomcat"
                  type="java.lang.String"/>
     <Environment name="DD_VERSION"
-                 value="1.0.0"
+                 value="98f68ee1c0844100c95e8b23adc7e38d85f637fb"
                  type="java.lang.String"/>
     <Environment name="DD_GIT_COMMIT_SHA"
-                 value="9f8ff7e3f42f9e0bd84fadb5060c381613955833"
+                 value="98f68ee1c0844100c95e8b23adc7e38d85f637fb"
                  type="java.lang.String"/>
     <Environment name="DD_GIT_REPOSITORY_URL"
                  value="https://github.com/andreibr/todo-list"
